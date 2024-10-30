@@ -28,7 +28,7 @@
 - 아이템의 정보 및 제작 함수를 담고 있는 블루프린트, 이 BP는 액터 컴포넌트로 각종 아이템과 관련된 액터의 컴포넌트로 추가할 생각입니다. 이 안에 아이템 정보들을 구현하고, GetItemData 함수로 정보를 가져와 쓰기 + Craft함수를 통한 제작 기능
 
 5. BP_CraftButtonWidget 및 BP_CraftingTableWidget
-- 제작대 ui 관련해서 사용하게 될 ui, 틀만 잡아둔 상태
+- 제작대 ui 관련해서 사용하게 될 ui, 틀만 잡아둔 상태(미완성)
 - BP_CraftingTableWidget에서 CraftButtonWidget을 생성(생성할 때 이름과 인덱스를 전달해줌), 버튼이 눌리면 다시 BP_CraftingTableWidget에서 눌린 버튼의 인덱스를 받아오기 가능.
 
 <생각하고 있는 추가/개선할 내용>
