@@ -1,0 +1,37 @@
+※ThirdPerson/Maps/TestBuilding 레벨에서 작업했습니다.
+
+() 안에 적힌 이름의 블루프린트 내에 구현되어 있습니다.
+
+<구현한 기능 정리>
+1. 체온 및 리스폰 기능
+- 플레이어의 체온이 지속적으로 감소(BP_ThirdPersonCharacter)
+- 플레이어의 체온이 0이 되면 플레이어 사망, 맵에 텐트가 존재하면 텐트 앞에서 부활하며 텐트가 없으면 처음 스폰위치에서 부활(BP_TemperatureManager)
+- 캠프파이어 근처에 있을시 지속적으로 체온이 상승(BP_CampFire)
+
+2. 상호작용 기능
+- E키를 누르면 상호작용 레이저가 발사되어 충돌 감지, 상호작용이 감지되면 액터의 이름을 출력함(BP_ThirdPersonManager)
+
+3. 인벤토리 기능
+- I키를 누르면 인벤토리가 실행되고 꺼짐. 인벤토리에서는 BP_ThirdPersonCharacter 내에 InventoryArray의 데이터를 받아 아이템을 보여줌.(BP_InventoryWidget)
+
+<만들어둔 구조체 및 블루프린트>
+1. BP_ItemSlotWidget
+- 인벤토리 혹은 창고 등에서 사용할 아이템 슬롯 Widget, ItemData를 SetItemData 이벤트를 이용해 받아와 이미지/이름/개수를 띄움
+
+2. Structure_ItemData
+- 아이템 이미지, 아이템 개수, 아이템 이름 3개의 변수를 가지는 구조체
+
+3. Structure_CraftRecipe
+- 목표 아이템(Structure_ItemData타입), 재료 아이템(Structure_ItemData타입 배열)을 가지는 구조체
+
+4. BP_ItemManager
+- 아이템의 정보 및 제작 함수를 담고 있는 블루프린트, 이 BP는 액터 컴포넌트로 각종 아이템과 관련된 액터의 컴포넌트로 추가할 생각입니다. 이 안에 아이템 정보들을 구현하고, GetItemData 함수로 정보를 가져와 쓰기 + Craft함수를 통한 제작 기능
+
+5. BP_CraftButtonWidget 및 BP_CraftingTableWidget
+- 제작대 ui 관련해서 사용하게 될 ui, 틀만 잡아둔 상태
+- BP_CraftingTableWidget에서 CraftButtonWidget을 생성(생성할 때 이름과 인덱스를 전달해줌), 버튼이 눌리면 다시 BP_CraftingTableWidget에서 눌린 버튼의 인덱스를 받아오기 가능.
+
+<생각하고 있는 추가/개선할 내용>
++ 텐트가 여러개일시 어디서 부활할지 선택하는 기능 
++ 상호작용 레이저 안보이게
++ 상호작용 판단 기준 이름 -> 태그로 변경, 각 액터에 태그 붙이기
